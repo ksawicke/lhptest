@@ -1,1 +1,1 @@
-Here is the example site: http://test.rinconmountaintech.com/sites/lhptest
+Here is the example site: http://test.rinconmountaintech.com/sites/lhptest/public
