@@ -31,7 +31,7 @@
             let app = this;
             let id = app.$route.params.id;
             app.teamId = id;
-            axios.get('/api/v1/teams/' + id)
+            axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams/' + id)
                 .then(function (resp) {
                     app.team = resp.data;
                 })
@@ -51,9 +51,9 @@
             saveForm() {
                 var app = this;
                 var newTeam = app.team;
-                axios.patch('/api/v1/teams/' + app.teamId, newTeam)
+                axios.patch('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams/' + app.teamId, newTeam)
                     .then(function (resp) {
-                        app.$router.replace('/admin/teams#/admin/teams');
+                        app.$router.replace('http://test.rinconmountaintech.com/sites/lhptest/public/admin/teams#/admin/teams');
                     })
                     .catch(function (resp) {
                         console.log(resp);

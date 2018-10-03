@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="form-group">
-            <router-link to="/admin/players/#/admin/players" class="btn btn-default">Back</router-link>
+            <router-link to="/admin/players" class="btn btn-default">Back</router-link>
         </div>
 
         <div class="panel panel-default">
@@ -47,7 +47,7 @@
     export default {
         data: function () {
             var app = this;
-            axios.get('/api/v1/teams')
+            axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams')
                 .then(function (resp) {
                     app.teams = resp.data;
                 })
@@ -70,9 +70,9 @@
             saveForm() {
                 var app = this;
                 var newPlayer = app.player;
-                axios.post('/api/v1/players', newPlayer)
+                axios.post('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players', newPlayer)
                     .then(function (resp) {
-                        app.$router.replace('/admin/players#/admin/players');
+                        app.$router.replace('/admin/players');
                     })
                     .catch(function (resp) {
                         console.log(resp);

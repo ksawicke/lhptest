@@ -1104,6 +1104,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__(12);
 
 window.Vue = __webpack_require__(36);
+// Vue.config.devtools = true
+Vue.config.devtools = false;
+Vue.config.debug = false;
+Vue.config.silent = true;
+
 
 
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
@@ -45971,7 +45976,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         var app = this;
-        axios.get('/api/v1/players').then(function (resp) {
+        axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players').then(function (resp) {
             app.players = resp.data;
         }).catch(function (resp) {
             console.log(resp);
@@ -45983,7 +45988,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteEntry: function deleteEntry(id, index) {
             if (confirm("Do you really want to delete this player?")) {
                 var app = this;
-                axios.delete('/api/v1/players/' + id).then(function (resp) {
+                axios.delete('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players/' + id).then(function (resp) {
                     app.players.splice(index, 1);
                 }).catch(function (resp) {
                     alert("Unable to delete the player");
@@ -46210,7 +46215,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         var app = this;
-        axios.get('/api/v1/teams').then(function (resp) {
+        axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams').then(function (resp) {
             app.teams = resp.data;
         }).catch(function (resp) {
             console.log(resp);
@@ -46231,8 +46236,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         saveForm: function saveForm() {
             var app = this;
             var newPlayer = app.player;
-            axios.post('/api/v1/players', newPlayer).then(function (resp) {
-                app.$router.replace('/admin/players#/admin/players');
+            axios.post('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players', newPlayer).then(function (resp) {
+                app.$router.replace('/admin/players');
             }).catch(function (resp) {
                 console.log(resp);
                 alert("Unable to save the player");
@@ -46256,10 +46261,7 @@ var render = function() {
       [
         _c(
           "router-link",
-          {
-            staticClass: "btn btn-default",
-            attrs: { to: "/admin/players/#/admin/players" }
-          },
+          { staticClass: "btn btn-default", attrs: { to: "/admin/players" } },
           [_vm._v("Back")]
         )
       ],
@@ -46519,7 +46521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var app = this;
         var id = app.$route.params.id;
         app.playerId = id;
-        axios.get('/api/v1/players/' + id).then(function (resp) {
+        axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players/' + id).then(function (resp) {
             app.player = resp.data;
         }).catch(function () {
             alert("Unable to load player record");
@@ -46539,8 +46541,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         saveForm: function saveForm() {
             var app = this;
             var newPlayer = app.player;
-            axios.patch('/api/v1/players/' + app.playerId, newPlayer).then(function (resp) {
-                app.$router.replace('/admin/players#/admin/players');
+            axios.patch('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players/' + app.playerId, newPlayer).then(function (resp) {
+                app.$router.replace('http://test.rinconmountaintech.com/sites/lhptest/public/admin/players#/admin/players');
             }).catch(function (resp) {
                 console.log(resp);
                 alert("Unable to update player record");
@@ -46566,7 +46568,10 @@ var render = function() {
           "router-link",
           {
             staticClass: "btn btn-default",
-            attrs: { to: "/admin/players/#/admin/players" }
+            attrs: {
+              to:
+                "http://test.rinconmountaintech.com/sites/lhptest/public/admin/players/#/admin/players"
+            }
           },
           [_vm._v("Back")]
         )
@@ -46786,6 +46791,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -46795,7 +46812,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         var app = this;
-        axios.get('/api/v1/teams').then(function (resp) {
+        axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams').then(function (resp) {
             app.teams = resp.data;
         }).catch(function (resp) {
             console.log(resp);
@@ -46807,7 +46824,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteEntry: function deleteEntry(id, index) {
             if (confirm("Do you really want to delete this team?")) {
                 var app = this;
-                axios.delete('/api/v1/teams/' + id).then(function (resp) {
+                axios.delete('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams/' + id).then(function (resp) {
                     app.teams.splice(index, 1);
                 }).catch(function (resp) {
                     alert("Unable to delete the team");
@@ -46913,8 +46930,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         saveForm: function saveForm() {
             var app = this;
             var newTeam = app.team;
-            axios.post('/api/v1/teams', newTeam).then(function (resp) {
-                app.$router.replace('/admin/teams#/admin/teams');
+            axios.post('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams', newTeam).then(function (resp) {
+                app.$router.replace('/admin/teams');
             }).catch(function (resp) {
                 console.log(resp);
                 alert("Unable to save the team");
@@ -47012,7 +47029,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var app = this;
         var id = app.$route.params.id;
         app.teamId = id;
-        axios.get('/api/v1/teams/' + id).then(function (resp) {
+        axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams/' + id).then(function (resp) {
             app.team = resp.data;
         }).catch(function () {
             alert("Unable to load team record");
@@ -47031,8 +47048,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         saveForm: function saveForm() {
             var app = this;
             var newTeam = app.team;
-            axios.patch('/api/v1/teams/' + app.teamId, newTeam).then(function (resp) {
-                app.$router.replace('/admin/teams#/admin/teams');
+            axios.patch('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams/' + app.teamId, newTeam).then(function (resp) {
+                app.$router.replace('http://test.rinconmountaintech.com/sites/lhptest/public/admin/teams#/admin/teams');
             }).catch(function (resp) {
                 console.log(resp);
                 alert("Unable to update team record");
@@ -47078,7 +47095,33 @@ var render = function() {
             "tbody",
             _vm._l(_vm.teams, function(team, index) {
               return _c("tr", [
-                _c("td", [_vm._v(_vm._s(team.name))]),
+                _c("td", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(team.name) +
+                      "\n                        "
+                  ),
+                  team.players.length > 0
+                    ? _c("div", [
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "ul",
+                          _vm._l(team.players, function(player, index) {
+                            return _c("li", [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(player.first_name) +
+                                  " " +
+                                  _vm._s(player.last_name) +
+                                  "\n                                "
+                              )
+                            ])
+                          })
+                        )
+                      ])
+                    : _vm._e()
+                ]),
                 _vm._v(" "),
                 _c(
                   "td",
@@ -47164,10 +47207,7 @@ var render = function() {
       [
         _c(
           "router-link",
-          {
-            staticClass: "btn btn-default",
-            attrs: { to: "/admin/teams#/admin/teams" }
-          },
+          { staticClass: "btn btn-default", attrs: { to: "/admin/teams" } },
           [_vm._v("Back")]
         )
       ],

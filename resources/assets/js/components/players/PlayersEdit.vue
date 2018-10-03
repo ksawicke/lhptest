@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="form-group">
-            <router-link to="/admin/players/#/admin/players" class="btn btn-default">Back</router-link>
+            <router-link to="http://test.rinconmountaintech.com/sites/lhptest/public/admin/players/#/admin/players" class="btn btn-default">Back</router-link>
         </div>
 
         <div class="panel panel-default">
@@ -37,7 +37,7 @@
             let app = this;
             let id = app.$route.params.id;
             app.playerId = id;
-            axios.get('/api/v1/players/' + id)
+            axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players/' + id)
                 .then(function (resp) {
                     app.player = resp.data;
                 })
@@ -58,9 +58,9 @@
             saveForm() {
                 var app = this;
                 var newPlayer = app.player;
-                axios.patch('/api/v1/players/' + app.playerId, newPlayer)
+                axios.patch('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players/' + app.playerId, newPlayer)
                     .then(function (resp) {
-                        app.$router.replace('/admin/players#/admin/players');
+                        app.$router.replace('http://test.rinconmountaintech.com/sites/lhptest/public/admin/players#/admin/players');
                     })
                     .catch(function (resp) {
                         console.log(resp);

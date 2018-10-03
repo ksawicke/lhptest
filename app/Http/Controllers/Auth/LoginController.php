@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/players#/admin/players';
+    protected $redirectTo = 'http://test.rinconmountaintech.com/sites/lhptest/public/admin/players#/admin/players';
 
     /**
      * Create a new controller instance.

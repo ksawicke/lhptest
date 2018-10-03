@@ -48,7 +48,7 @@
         },
         mounted() {
             var app = this;
-            axios.get('/api/v1/players')
+            axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players')
                 .then(function (resp) {
                     app.players = resp.data;
                 })
@@ -61,7 +61,7 @@
             deleteEntry(id, index) {
                 if (confirm("Do you really want to delete this player?")) {
                     var app = this;
-                    axios.delete('/api/v1/players/' + id)
+                    axios.delete('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/players/' + id)
                         .then(function (resp) {
                             app.players.splice(index, 1);
                         })

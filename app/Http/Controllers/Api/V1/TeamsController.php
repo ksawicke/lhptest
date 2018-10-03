@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Team;
+use App\Player;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class TeamsController extends Controller
 {
     public function index() {
-        return Team::orderBy('name')->get();
+//        return Team::orderBy('name')->get();
+        return Team::with('players')->orderBy('name')->get();
     }
 
     public function show($id) {

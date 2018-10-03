@@ -8,6 +8,11 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// Vue.config.devtools = true
+Vue.config.devtools = false
+Vue.config.debug = false
+Vue.config.silent = true
+
 import VueRouter from 'vue-router';
 
 window.Vue.use(VueRouter);
