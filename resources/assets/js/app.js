@@ -8,15 +8,56 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueRouter from 'vue-router';
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+window.Vue.use(VueRouter);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+import PlayersIndex from './components/players/PlayersIndex.vue';
+import PlayersCreate from './components/players/PlayersCreate.vue';
+import PlayersEdit from './components/players/PlayersEdit.vue';
 
-const app = new Vue({
-    el: '#app'
-});
+import TeamsIndex from './components/teams/TeamsIndex.vue';
+import TeamsCreate from './components/teams/TeamsCreate.vue';
+import TeamsEdit from './components/teams/TeamsEdit.vue';
+
+const routes = [
+    // PLAYERS
+    {
+        path: '/admin/players',
+        components: {
+            playersIndex: PlayersIndex
+        }
+    },
+    {
+        path: '/admin/players/create',
+        component: PlayersCreate,
+        name: 'createPlayer'
+    },
+    {
+        path: '/admin/players/edit/:id',
+        component: PlayersEdit,
+        name: 'editPlayer'
+    },
+
+    // TEAMS
+    {
+        path: '/admin/teams',
+        components: {
+            teamsIndex: TeamsIndex
+        }
+    },
+    {
+        path: '/admin/teams/create',
+        component: TeamsCreate,
+        name: 'createTeam'
+    },
+    {
+        path: '/admin/teams/edit/:id',
+        component: TeamsEdit,
+        name: 'editTeam'
+    }
+]
+
+const router = new VueRouter({ routes })
+
+const app = new Vue({ router }).$mount('#app')

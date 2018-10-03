@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-
     protected $fillable = [
         'name'
     ];
@@ -14,5 +13,21 @@ class Team extends Model
     public function players() {
         return $this->hasMany(Player::class);
     }
-
 }
+
+//namespace App;
+//
+//use Illuminate\Database\Eloquent\Model;
+//
+//class Team extends Model
+//{
+//
+//    protected $fillable = [
+//        'name'
+//    ];
+//
+//    public function players() {
+//        return $this->hasMany(Player::class);
+//    }
+//
+//}

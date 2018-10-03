@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Team;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TeamsController extends Controller
 {
-    public function index()
-    {
-        return view('admin.teams.index');
+    public function index() {
+        return Team::orderBy('name')->get();
     }
 
     public function show($id) {
@@ -18,7 +19,6 @@ class TeamsController extends Controller
     public function update(Request $request, $id) {
         $team = Team::findOrFail($id);
         $team->update($request->all());
-
         return $team;
     }
 
@@ -32,6 +32,7 @@ class TeamsController extends Controller
         $team->delete();
         return '';
     }
+
 }
 
 //namespace App\Http\Controllers;

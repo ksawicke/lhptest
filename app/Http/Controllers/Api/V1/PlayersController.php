@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Player;
+use App\Team;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PlayersController extends Controller
 {
-    public function index()
-    {
-        return view('admin.players.index');
+    public function index() {
+        return Player::with('team')->orderBy('last_name')->orderBy('first_name')->get();
     }
 
     public function show($id) {
@@ -18,7 +20,6 @@ class PlayersController extends Controller
     public function update(Request $request, $id) {
         $player = Player::findOrFail($id);
         $player->update($request->all());
-
         return $player;
     }
 
@@ -32,6 +33,7 @@ class PlayersController extends Controller
         $player->delete();
         return '';
     }
+
 }
 
 //namespace App\Http\Controllers;
