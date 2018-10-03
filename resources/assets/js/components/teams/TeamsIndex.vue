@@ -16,7 +16,19 @@
                     </thead>
                     <tbody>
                     <tr v-for="team, index in teams">
-                        <td>{{ team.name }}</td>
+                        <td>
+                            {{ team.name }}
+                            <div v-if="team.players.length > 0">
+
+                                <br />
+                                <ul>
+                                    <li v-for="player, index in team.players">
+                                        {{ player.first_name }} {{ player.last_name }}
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </td>
                         <td>
                             <router-link :to="{name: 'editTeam', params: {id: team.id}}" class="btn btn-xs btn-default">
                                 Edit
@@ -44,7 +56,7 @@
         },
         mounted() {
             var app = this;
-            axios.get('/api/v1/teams')
+            axios.get('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams')
                 .then(function (resp) {
                     app.teams = resp.data;
                 })
@@ -57,7 +69,7 @@
             deleteEntry(id, index) {
                 if (confirm("Do you really want to delete this team?")) {
                     var app = this;
-                    axios.delete('/api/v1/teams/' + id)
+                    axios.delete('http://test.rinconmountaintech.com/sites/lhptest/public/api/v1/teams/' + id)
                         .then(function (resp) {
                             app.teams.splice(index, 1);
                         })
